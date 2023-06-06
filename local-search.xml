@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>ubuntu 安装mysql 踩坑</title>
+    <link href="/2023/06/06/ubuntu-%E5%AE%89%E8%A3%85mysql-%E8%B8%A9%E5%9D%91/"/>
+    <url>/2023/06/06/ubuntu-%E5%AE%89%E8%A3%85mysql-%E8%B8%A9%E5%9D%91/</url>
+    
+    <content type="html"><![CDATA[<h1 id="ubuntu-安装mysql-踩坑"><a href="#ubuntu-安装mysql-踩坑" class="headerlink" title="ubuntu 安装mysql 踩坑"></a>ubuntu 安装mysql 踩坑</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><blockquote><p>更新源: <code>sudo apt update</code></p><p>安装mysql: <code>sudo apt install mysql-server</code></p><p>启动mysql服务: <code>sudo systemctl mysql-server</code></p><p>验证安装版本: <code>mysql --version</code></p><p>初始化mysql: <code>sudo mysql_secure_installation</code></p></blockquote><h4 id="设置密码遇到的问题"><a href="#设置密码遇到的问题" class="headerlink" title="设置密码遇到的问题"></a>设置密码遇到的问题</h4><h6 id="密码策略太难，改成简单的"><a href="#密码策略太难，改成简单的" class="headerlink" title="密码策略太难，改成简单的"></a>密码策略太难，改成简单的</h6><blockquote><p><code>sudo mysql</code> 管理员权限直接登陆mysql,以下步骤都直接在mysql中进行</p><p><code>set global validate_password_policy=LOW;</code> 修改密码强度为最低<br>        网上的是这个命令，但我用会报错</p><blockquote><p><code>set global validate_password.policy=LOW;</code> 设置密码难度为最低，改用这个成功，下面的指令同样</p></blockquote><blockquote><p><code>set global validate_password.length=6;</code> 设置密码长度为6位</p></blockquote></blockquote><blockquote><p><code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password by &#39;你的密码&#39;;</code> 同样需要修改密码策略</p><p>用上面代码修改过密码就可以直接进入数据库了，不需要重新初始化设置密码</p></blockquote>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>markdown语法</title>
     <link href="/2023/06/03/markdown%E8%AF%AD%E6%B3%95/"/>
     <url>/2023/06/03/markdown%E8%AF%AD%E6%B3%95/</url>
